@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumah Sakit Sehat Sejahtera</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>  
+</head>
+<body>
+    
+    <header>
+        <h1>Rumah Sakit Sehat Sejahtera</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#schedule">Jadwal Dokter</a></li>
+            <li><a href="#booking">Booking Antrian</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="intro">
+            <h2>Selamat Datang di RS Sehat Sejahtera</h2>
+            <p>Rumah Sakit Sehat Sejahtera adalah fasilitas kesehatan terpercaya yang telah melayani masyarakat selama lebih dari 20 tahun. Kami berkomitmen untuk memberikan pelayanan kesehatan terbaik dengan didukung oleh tim medis profesional dan peralatan modern.</p>
+        </section>
+
+        <section id="schedule">
+            <h2>Jadwal Dokter</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Hari</th>
+                        <th>Dokter</th>
+                        <th>Poli</th>
+                        <th>Jam Praktik</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-body">
+                    <!-- Akan diisi oleh JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="booking">
+            <h2>Booking Antrian</h2>
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>Jenis Layanan:</label>
+                    <select id="service-type" onchange="toggleBPJSInput()">
+                        <option value="umum">Umum</option>
+                        <option value="bpjs">BPJS</option>
+                    </select>
+                </div>
+        
+                <!-- Input BPJS yang akan muncul/sembunyi -->
+                <div class="form-group" id="bpjs-input-container" style="display: none;">
+                    <label>Nomor BPJS:</label>
+                    <input type="text" id="bpjs-number">
+                </div>
+        
+                <div class="form-group">
+                    <label>Nama Lengkap:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor Identitas:</label>
+                    <input type="text" id="id-number" required>
+                </div>
+                <div class="form-group">
+                    <label>Pilih Poli:</label>
+                    <select id="poli">
+                        <option value="umum">Poli Umum</option>
+                        <option value="gigi">Poli Gigi</option>
+                        <option value="mata">Poli Mata</option>
+                        <option value="anak">Poli Anak</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Kunjungan:</label>
+                    <input type="date" id="visit-date" required>
+                </div>
+                <button onclick="bookAppointment()">Booking Antrian</button>
+            </div>
+        </section>
+        
+    </div>
+</body>
+</html>

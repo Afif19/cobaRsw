@@ -1,0 +1,108 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RS Sehat Sejahtera</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="login-header">
+                <img src="logo.png" alt="RS Sehat Sejahtera Logo" class="login-logo">
+                <h1>Selamat Datang Kembali</h1>
+                <p>Silakan login untuk mengakses layanan RS Sehat Sejahtera</p>
+            </div>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" placeholder="Masukkan email Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" placeholder="Masukkan password Anda" required>
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                </div>
+                
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Ingat saya</span>
+                    </label>
+                    <a href="#" class="forgot-password">Lupa Password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Masuk</button>
+                
+                <div class="divider">
+                    <span>atau masuk dengan</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="google-btn">
+                        <img src="google-icon.png" alt="Google">
+                        Google
+                    </button>
+                    <button class="facebook-btn">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <p class="register-link">
+                    Belum punya akun? <a href="register.html">Daftar sekarang</a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="login-right">
+            <div class="login-image">
+                <!-- bisa tambahin Gambar -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const passwordInput = document.querySelector('#password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Form submission
+        document.querySelector('.login-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
+            
+            // Array kredensial yang valid
+            const validCredentials = [
+                { email: "user@example.com", password: "password" },
+                { email: "admin@rs.com", password: "admin123" },
+                { email: "dokter@rs.com", password: "dokter123" }
+            ];
+            
+            // Cek apakah kredensial cocok dengan salah satu dari yang valid
+            const isValid = validCredentials.some(cred => 
+                cred.email === email && cred.password === password
+            );
+            
+            if (isValid) {
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'main.html';
+            } else {
+                alert('Email atau password salah!');
+            }
+        });
+    </script>
+</body>
+</html>
